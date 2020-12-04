@@ -1,7 +1,8 @@
 <template>
-  <AwScrollbar id="app">
-    <div class="colnum"></div>
-  </AwScrollbar>
+  <div id="app">
+    <AwButton @click="handleChange">emmm</AwButton>
+    <AwButton @click="close">close</AwButton>
+  </div>
 </template>
 
 <script>
@@ -9,13 +10,27 @@ export default {
   name: "App",
   data() {
     return {
-      activeNames1: ["0", "1"],
+      obj: null,
     };
   },
   mounted() {},
   methods: {
     handleChange(res) {
-      console.log(res);
+      this.obj = this.$notify.success({
+        title: "这是一个不同",
+        msg: "啦啦啦啦",
+        type: "warning",
+        showClose: false,
+        onClick: () => {
+          console.log("1");
+        },
+        onClose: () => {
+          console.log("close");
+        },
+      });
+    },
+    close(res) {
+      this.obj.close();
     },
   },
 };
@@ -30,11 +45,8 @@ export default {
 #app {
   width: 80%;
   height: 70vh;
-
-  .colnum {
-    width: 100%;
-    height: 1600px;
-    background: linear-gradient(to bottom, #ed143d, #0f9960);
+  button{
+    margin: 10px;
   }
 }
 </style>

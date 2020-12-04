@@ -106,6 +106,7 @@ export default {
     clickHandler() {
       let key = this.debounceOrThrottle;
       const fn = this.$listeners.click;
+      if(!fn) return;
       if (key === 0) {
         fn();
       } else if (key === 1) {
@@ -147,9 +148,9 @@ export default {
     border-radius: 50%;
     opacity: 0;
   }
-  &__content{
-	line-height: 14px;
-	font-size: 14px;
+  &__content {
+    line-height: 14px;
+    font-size: 14px;
   }
   &-round {
     border-radius: 40px;

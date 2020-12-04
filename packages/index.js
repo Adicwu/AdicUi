@@ -1,33 +1,34 @@
-import AwWaterfall from './Waterfall/src/Waterfall.vue';
-import AwWaterfallColumn from './WaterfallColumn/src/WaterfallColumn.vue';
-import AwButton from './Button/src/Button.vue';
-import AwCarousel from './Carousel/src/Carousel.vue';
-import AwCarouselItem from './CarouselItem/src/CarouselItem.vue';
-import AwCollapse from './Collapse/src/Collapse.vue';
-import AwCollapseItem from './CollapseItem/src/CollapseItem.vue';
-import AwOverlay from './Overlay/src/Overlay.vue';
-import AwSwitch from './Switch/src/Switch.vue';
-import AwTextField from './TextField/src/TextField.vue';
-import AwBackTop from './BackTop/src/BackTop.vue';
-import AwRadioGroup from './RadioGroup/src/RadioGroup.vue';
-import AwRadio from './Radio/src/Radio.vue';
-import AwRadioButton from './RadioButton/src/RadioButton.vue';
-import AwCheckboxGroup from './CheckboxGroup/src/CheckboxGroup.vue';
-import AwCheckbox from './Checkbox/src/Checkbox.vue';
-import AwCheckboxButton from './CheckboxButton/src/CheckboxButton.vue';
-import AwSelect from './Select/src/Select.vue';
-import AwOption from './Option/src/Option.vue';
-import AwDragItem from "./DragItem/src/DragItem.vue";
-import AwDragGroup from "./DragGroup/src/DragGroup.vue";
-import AwSlider from "./Slider/src/Slider.vue";
-import AwScrollbar from "./Scrollbar/src/scrollbar.js";
+import AwButton from './Button/index.js';
+import AwWaterfall from './Waterfall/index.js';
+import AwWaterfallColumn from './WaterfallColumn/index.js';
+import AwCarousel from './Carousel/index.js';
+import AwCarouselItem from './CarouselItem/index.js';
+import AwCollapse from './Collapse/index.js';
+import AwCollapseItem from './CollapseItem/index.js';
+import AwOverlay from './Overlay/index.js';
+import AwSwitch from './Switch/index.js';
+import AwTextField from './TextField/index.js';
+import AwBackTop from './BackTop/index.js';
+import AwRadioGroup from './RadioGroup/index.js';
+import AwRadio from './Radio/index.js';
+import AwRadioButton from './RadioButton/index.js';
+import AwCheckboxGroup from './CheckboxGroup/index.js';
+import AwCheckbox from './Checkbox/index.js';
+import AwCheckboxButton from './CheckboxButton/index.js';
+import AwSelect from './Select/index.js';
+import AwOption from './Option/index.js';
+import AwDragItem from "./DragItem/index.js";
+import AwDragGroup from "./DragGroup/index.js";
+import AwSlider from "./Slider/index.js";
+import AwNotification from "./Notification/index.js";
 
+import AwScrollbar from "./Scrollbar/src/scrollbar.js";
 import AwCollapseTransition from "@src/transitions/collapse-transition.js";
 
 const components = [
+    AwButton,
     AwWaterfall,
     AwWaterfallColumn,
-    AwButton,
     AwCarousel,
     AwCarouselItem,
     AwCollapse,
@@ -44,15 +45,17 @@ const components = [
     AwCheckboxButton,
     AwSelect,
     AwOption,
-    AwCollapseTransition,
     AwDragItem,
     AwDragGroup,
     AwSlider,
-    AwScrollbar
+    AwCollapseTransition,
+    AwScrollbar,
+    AwNotification
 ]
-const install = function (Vue) {
+const install = function (Vue, opts = {}) {
     if (install.installed) return;
-    components.map(component => Vue.component(component.name, component))
+    components.forEach(component => Vue.component(component.name, component))
+    Vue.prototype.$notify = AwNotification
 }
 if (typeof window !== 'undefined' && window.Vue) install(window.Vue)
 export default {
