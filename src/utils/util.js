@@ -7,6 +7,7 @@ function extend(to, _from) {
 
 export function toObject(arr) {
     var res = {};
+    console.log('do');
     for (let i = 0; i < arr.length; i++) {
         if (arr[i]) {
             extend(res, arr[i]);
